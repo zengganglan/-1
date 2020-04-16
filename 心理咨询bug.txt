@@ -1,0 +1,90 @@
+【bug】
+前端读取excel渲染数据
+前端根据table表格下载excel
+前端下载world文档，修改插件使得可以下载echar图形，问题渲染多个chart图形原生不可以
+修改日历插件增加功能事件
+IE具有缓存机制，不重新请求同一个接口。
+因为IE内核和360内核是一样的，vue项目需要配置才会在IE打开项目
+（特别提示：新建一个标签页面以后，即使跟前一个页面的地址相同，新建标签页面也获取不到前一个页面中获取或者设置的sessionStorage）
+localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。第二天、第二周或下一年之后，数据依然可用。localStorage所有页面都可以获取；
+git在另一台创建版本 https 链接拉取代码
+登录页：用cookie判断有没有保存到数据，如果有直接把值拿到放到表单里面，没有用户名和密码就为空值
+如果有去数据库查询有没有这个人，跳到首页带着id,所有首页和子页面的显示数据根据这个id来判断提示用户是否登陆成功
+第一次请求存cookie,记住密码。跳转登陆。每个子页面判断有没有登陆过，否者他跳到登陆页面
+vue self 和 stop 事件修饰符
+element-ui 在isFirmwareAddShow为true的时候，DOM并没有渲染完成 拿不到dom
+vuex :mutation传多个参数以对象形式：that.$store.commit("setToken", {token:token, role:role});
+url地址栏不显示参数一定要加名字params:that.$router.push({name:'详情数据',path:'/admin/setdatadetail',params:{detail:detail}}) 
+显示参数query还要在router.js路径里面设置：
+移动端 点击事件和手指touch事件冲突，touchstart事件的e.preventDefault()阻止了绑定元素的点击事件click的失效
+
+递归调用函数时返回的object通过打印有值，但是在获取的时候是undefined，原因是在递归函数内部没有对递归函数进行return，否则外层函数无法接收到返回值。
+首页：三个组件拼接，存在两个公共组件
+嵌入视频播放在uc浏览器播放白屏，其他浏览器正常，UC单独打开bilibili视频网址正常 <iframe src="http://player.bilibili.com/player.html?
+		aid=52549693&cid=91961258&page=1" scrolling="no"  frameborder="no" 
+		framespacing="0" allowfullscreen="true" class=" ifra hidden" id="ifra"> </iframe> 
+解决：在手机端调到另一个响应式页面 但是这个页面防止别人iframe 引用做了js处理
+沙盘 和 vr下载world 和excel 文档流的问题 解决，请求头没配置上传成了参数 
+【流程功能】
+先写静态页面，数据动态渲染===》vue搭建
+多点登录：后台需要更新每一次登录的cookie 如果统一用户已经有cookie 就返回已经有的不要新生成（采取措施） ，单点登录 后台判断有没有cookie 有就开始判断新的和旧的是否一致 一致就同一点登录 不一致就多点登录挤掉原来的登录提示cookie以更新
+bitberg303
+为什么判断token是否存在再拉取用户信息，
+假设我把用户权限和用户名也存在了本地，但我这时候用另一台电脑登录修改了自己的用户名，
+之后再用这台存有之前用户信息的电脑登录，它默认会去读取本地 cookie 中的名字，并不会去拉去新的用户信息提示用户名信息包括密码是否已经修改。
+登陆拦截：登陆信息全部放在vuex里面。首次登陆成功调用接口传参返回信息并且把相关信息存储在cookie里面可以把uid等等设置成动态检测属性放在getters上面（以防我们登陆另一个号重新请求uid会改变可以动态改变cookie），
+如果接口返回信息成功表示可以进行首页登陆跳转，同时设置cookie存在本地cookie里面。
+后面可以利用cookie做登陆拦截。我们把cookie放到store里面可以全局检测store里面cookie是否存在，加入跳转到首页。使用路由检测router.beforeEach((to, from, next) => {}
+每一次跳转都会检测store里面的属性检测是否为空。如果有值直接跳转到首页，如果没有值表示返回到登录页不不能进行跳转/否则全部重定向到登录页
+登陆成功判断是学生还是老师返回不同的首页 this.$router.push({ path: '/' });
+
+组件组成：/index==》Layout组件：组件布局=》很多子组件？？
+
+左侧：
+slidebar.vue：主要是router-link可以跳转，跳转页面中间模块会占用不同的组件
+
+头部：
+navbar.vue:有个组件<tabs-view>【这个组件循环store里面路径对象数据，同时里面用watch监听$route对象看路由是否变化（ $route() {this.getBreadcrumb()};）,如果变化调用store函数并且取到当前的路由情况this.$route.matched[this.$route.matched.length - 1]
+增加store里面的路径对象】和几个弹窗
+
+this.$route.matched用法：路由/movie/movieSearch；返回数组【name：首页，path:/movie,name："电影搜索"，path:"/movie/movieSearch"】生成数据动态渲染面包屑内容
+中间模块：路由检测
+app-main.vue：面包屑组件levelbar.vue[这组件也会检测路由变化，取到name属性和path属性存放到这个数据，在组件内循环这个数据渲染]+路由占位空间router-view【router.js里面路由检测会跳转不同页面】
+中间页面大多数是初始化数据查询，包括全选，编辑，删除，排序，分页，添加，
+批量删除//组件有个事件能检测到全选数据，把这个数据数组放到data里面。促发批量删除事件就把要删除的数据到后台，后台删除数据，this.list数据改变重新渲染。运用到的是elemengt-ui组件。这个组件页面打开就把筛选条件作为查询数据结果，没有筛选条件自动为空
+单个删除//组件有个事件能检测到删除的这一个数据id值传到后台，后台删除数据前台刷新数据调用getlist()
+新增把数据提交到后台刷新数据重新渲染
+有一个编辑表单页面。点击提交按钮收集表单数据提交后台，
+设置权限页面：新增角色功能，点击出现弹窗，编辑权限弹窗【用到elementui弹框组件。可以设置显示隐藏】，点击确定提交提交到后台新增加数据，重新调用请求数据结果改变this.data导致新数据在页面上
+同时把对话框影藏
+
+分页查询：数据渲染getlist()参数知道pagesize和currentpage和studentName【搜索条件文本框的值，没有为空】请求接口。用elementui组件前端可以动态改变这3个参数的值，
+每次改变触发相应函数比如搜索/pagesize/currrent改变时就间接调用getlist()函数返回新数据。接口根据参数返回相应数据
+
+权限管理：超级管理员【他可以分配权限给普通管理员，只有超级管理员能看到权限 可以动态修改角色权限】和普通管理员分配到的权限【普通管理员登录就获得权限==删除 查看日志等等功能】侧边栏里面每个页面都有权限
+角色创建时 超级管理员手动操作权限，否则什么权限都没有，侧边栏的显示是有用户权限的 或者删除权限角色对应下面的用户后台清空以前的权限设置，即没有权限。当这个用户下次登录后台返回没有可用权限 
+
+权限管理：
+1，路由权限，功能权限。路由权限一开始就返回对应的导航栏。功能权限后台匹配这个人返回有没有权限，前端做弹窗
+2.html页面移动端坐适配。后台数据不用变
+3管理员列表：操作日志 登录用户站内消息 点击个人信息 基本信息角色分配页面
+学生资料管理：学生个人信息 操作学生 【基本资料修改 添加评语 】
+验证码图片
+跨域解决 脚手架配置 
+请求头配置token
+
+
+远程控制：teamViewer
+远程连接云服务器
+cmd命令：mstsc
+服务器IP:47.110.148.47
+登录用户名：Administrator
+登录密码：Hxxl123456
+Host：58f867406ee75.sh.cdb.myqcloud.com
+
+Port：4019
+
+username: xlzx
+
+password: aTc#4xcX
+前端框架：easy-ui:http://www.jeasyui.net/plugins/170.html。

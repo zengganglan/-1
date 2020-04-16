@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+* {margin: 0;padding: 0;}
+.box {
+    width: 300px;
+    height: 500px;
+    border: 1px solid red;
+    margin: 100px;
+    position: relative;
+
+    overflow: hidden;
+
+    /* 不让文字被选中 */
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.content {
+    padding: 5px 18px 5px 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+.scroll {
+    width: 18px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #eee;
+}
+.bar {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    border-radius:  10px;
+    cursor: pointer;
+}
+</style>
+<body>
+    <div class="box" id="box">
+        <div class="content" id="content">
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+           我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，  我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+           我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，  我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+           我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，  我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+            我是文字内容，我是文字内容，我是文字内容，
+          
+          
+          
+        </div>
+        <div class="scroll" id="scroll">
+            <div class="bar" id="bar"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var box = document.getElementById("box")
+    var content = document.getElementById("content")
+    var scroll = document.getElementById("scroll")
+    var bar = document.getElementById("bar")
+    //滚动条的大小随着内容的大小而改变。
+    //根据公式：box.clientHeight/box.scrollHeight = bar.clientHeight/scroll.clientHeight
+   if(content.scrollHeight > box.clientHeight){
+   var m =box.clientHeight/content.scrollHeight *scroll.clientHeight
+    }
+    bar.style.height=  m +"px";
+    //鼠标按下的时候求得他离最近盒子的距离
+   // 子盒子和父盒子都是绝对定位，所以相对于父亲边偏移
+    bar.onmousedown=function(e){
+       var y = e.pageY-bar.offsetTop-box.offsetTop
+       bar.onmousemove=function(e){
+        var n =  e.pageY-y-box.offsetTop
+        //限制按钮移动的最大值和最小值
+        n<0? n = 0:n;
+        n>box.clientHeight-bar.clientHeight?n=box.clientHeight-bar.clientHeight:n;
+        bar.style.top=n+"px"
+
+    //3 当拖拽滚动条的时候，改变内容的位置
+    // 内容滚动的距离 / 内容最大能够滚动的距离 = 滚动条滚动的距离 / 滚动条最大能够滚动的距离
+
+     //内容最大能够滚动的距离:
+     var a=content.scrollHeight-box.clientHeight
+     var b=box.clientHeight-bar.clientHeight
+     var nr=n/b*a
+     content.style.top=-nr+"px"
+
+       }
+    
+    }
+    bar.onmouseup=function(){
+        //移除鼠标的移动事件
+        bar.onmousemove=null
+    }
+    //
+
+</script>
+</html>

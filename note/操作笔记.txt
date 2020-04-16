@@ -1,0 +1,73 @@
+插件：code spell checker
+小程序zengganglan@163.com
+  z556612941028
+开发者id:wx6df6ec486b1985b5
+npm:zengganglan / 556612941028
+抓包工具：fiddler调试后台接口
+ftp服务器软件:把代码上传到服务器
+码云：zglll/556612941028lll
+getup:zengganglan:556612941028lll
+http://destiny-blog.win/
+Windows\System32\drivers\etc
+snipast:截屏软件
+REM布局网站切图
+快捷键：
+window+r+cmd--寻找某个文件夹/进入终端
+鼠标移动窗口：alt+tab alt+space  m+上下左右键
+https://www.cnblogs.com/nick4/p/6391244.html：语法
+
+dir：查看当前目录的所有子元素。
+md:  创建文件夹  md kf
+cd： 切换目录
+rd：删除文件夹
+cls:清空终端
+创建文件：cd./>index.html
+cd/:返回根目录。
+上建：返回上一次操作
+站长之家网站：http://tool.chinaz.com/Tools/CssFormat.aspx
+思维导图：https://www.processon.com/view/link/5a2fbacde4b0462faa7f8533
+//进入 REPL 环境： 打开任意终端，直接输入 node 并回车，就会进入到 REPL 环境中直接运行代码；
+//在文件目录下打开打开总段运行js文件 node 文件名
+ 
+端口 -git初始化：get bush=>git init托管  git status查看所有文件状态 get add.放在暂存区 get commit -m "..."提交到本地的git
+如果要上传到远端，生成ssh:命令符运行 ssh-keygen -t rsa -C '密钥说明'  找到复制到网上后本地和网上就建立链接
+1. 创建.gitignore文件忽略node_modules  .vscode  .git .idea
+2. 运行 git init 初始化 git仓库
+3. 提交代码修改 
+    3.1. git status  ----- 查看仓库状态
+    3.2. git add . -----提交所有修改到暂存区
+    3.3. git commit -m '提交说明' -------把暂存区代码提交到仓库（git已经链接仓库的情况下可以直接推送）
+4. 打开https://gitee.com 注册账号
+5. 在个人设置中 ssh 中 设置密钥
+    5.1. ssh的生成  在git bash中 运行 ssh-keygen -t rsa -C '密钥说明'
+    5.2. 打开C/用户/admin/.ssh / is_rsa.pub用记事本打开 赋值内容 粘贴到 网站上
+6. 点击头像旁边的+号 创建新的项目 
+7. 运行提示的git命令 推送代码
+8. 使用 git remote add origin “地址”仓储地址将本地项目和远程仓储连接，并使用origin最为远程仓储的别名
+9. 使用 git push -u origin master 将本地代码push到仓储中
+
+git小乌龟工具:
+创建版本库：拉取文件复制拉取文件地址的url放在远端然后经行拉取
+设置：生成文件--创建版本库--设置--远端--把网站创建的文件路劲复制给git的url--在git拉取操作，把gitup生成文件拉取过来，
+上传：版本库点击空白-git提交r--选择自己新生md文件--文件描述--先提交在推送--登陆网站账号密码
+上传文件到别人的远端口，点击选择文件上传推送
+
+命令行bush
+
+git官网建仓-电脑本地创建项目-bush窗口打开-命令行开始
+git init
+git add .  //提交所有
+git commit -m "first commit" // 可能报错第一次使用git要随意设置一个属于你本地的用户名和邮件地址 git config【https://www.jianshu.com/p/73018a8d168b】
+git remote add origin https://github.com/zengganglan/-zgl.git  //可能已经存在 git remote rm orgin
+git push -u origin master //需要输入你官网git登录用的的账户和密码
+
+解决冲突文件/找回删除文件，，解决冲突/标记为以解决/正常上传
+移动端手机调试：有线：手机连上电脑热点，放到服务器设置域名，cmd使用命令---------------------------ipconfig//得到ip地址==手机也可以访问
+https://www.baacloud.cc/：优化网咯 svn==git  sass=less $/@定义变量
+解决bug的指派平台：禅道（公司注册）
+后台接口：word文档/doclever/ecliner
+前台加密：base64/MD5
+免费服务器：ngrok
+
+
+
