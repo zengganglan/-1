@@ -1,6 +1,6 @@
 插件：code spell checker
 小程序zengganglan@163.com
-  z556612941028
+      z556612941028
 开发者id:wx6df6ec486b1985b5
 npm:zengganglan / 556612941028
 抓包工具：fiddler调试后台接口
@@ -35,7 +35,7 @@ cd/:返回根目录。
 2. 运行 git init 初始化 git仓库
 3. 提交代码修改 
     3.1. git status  ----- 查看仓库状态
-    3.2. git add . -----提交所有修改到暂存区
+    3.2. git add . -----后面加点表示提交所有修改到暂存区
     3.3. git commit -m '提交说明' -------把暂存区代码提交到仓库（git已经链接仓库的情况下可以直接推送）
 4. 打开https://gitee.com 注册账号
 5. 在个人设置中 ssh 中 设置密钥
